@@ -1,5 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="Theme.RestCountries" parent="android:Theme.Material.Light.NoActionBar" />
+    <style name="Theme.RestCountries" parent="android:Theme.Material.Light.NoActionBar" >
+<!--        <item name="android:windowBackground">@android:color/transparent</item>-->
+<!--        &lt;!&ndash; Позволяет окну быть полупрозрачным &ndash;&gt;-->
+<!--        <item name="android:windowIsTranslucent">true</item>-->
+<!--        &lt;!&ndash; Убирает стандартный заголовок, если он есть &ndash;&gt;-->
+<!--        <item name="android:windowNoTitle">true</item>-->
+<!--        &lt;!&ndash; Убирает рамку окна &ndash;&gt;-->
+<!--        <item name="android:windowContentOverlay">@null</item>-->
+<!--        &lt;!&ndash; Делает статус-бар и навигационный бар прозрачными &ndash;&gt;-->
+<!--        <item name="android:statusBarColor">@android:color/transparent</item>-->
+<!--        <item name="android:navigationBarColor">@android:color/transparent</item>-->
+    </style>
 </resources>

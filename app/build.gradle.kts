@@ -73,6 +73,7 @@ dependencies {
     implementation(libs.coil.network)
     ksp(libs.androidx.room.compiler)
     api(libs.androidx.room.ktx)
+    implementation("androidx.compose.material:material-icons-extended:1.7.7")
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
