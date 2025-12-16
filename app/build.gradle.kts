@@ -74,6 +74,9 @@ dependencies {
     ksp(libs.androidx.room.compiler)
     api(libs.androidx.room.ktx)
     implementation("androidx.compose.material:material-icons-extended:1.7.7")
+    implementation(libs.androidx.navigation3.ui)
+    implementation(libs.androidx.navigation3.runtime)
+    implementation(libs.androidx.lifecycle.viewmodel.navigation3)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

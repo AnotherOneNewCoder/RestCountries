@@ -8,6 +8,6 @@ data class CountryDto(
     val flags: FlagsDto,
     val capital: List<String>? = null,
     val population: Long? = null,
-    val region: String? = null
+    val region: String? = null,
 )
 

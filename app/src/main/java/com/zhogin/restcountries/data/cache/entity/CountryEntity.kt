@@ -11,5 +11,5 @@ data class CountryEntity(
     val capital: String?,
     val population: Long?,
     val region: String?,
-    val timestamp: Long = System.currentTimeMillis()
+    val timestamp: Long = System.currentTimeMillis(),
 )

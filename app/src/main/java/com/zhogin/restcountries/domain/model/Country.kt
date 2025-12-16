@@ -5,5 +5,5 @@ data class Country(
     val flagUri: String,
     val capital: String?,
     val population: Long?,
-    val region: String?
+    val region: String?,
 )

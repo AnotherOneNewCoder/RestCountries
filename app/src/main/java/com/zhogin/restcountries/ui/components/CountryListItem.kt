@@ -33,13 +33,13 @@ import com.zhogin.restcountries.ui.theme.TextDark
 fun CountryListItem(
     modifier: Modifier = Modifier,
     county: Country,
-    onClick: () -> Unit,
+    onClick: (String) -> Unit,
 ) {
     Card(
         modifier = modifier
             .fillMaxWidth()
             .padding(horizontal = 16.dp, vertical = 6.dp)
-            .clickable(onClick = onClick),
+            .clickable(onClick = {onClick(county.name)}),
         shape = RoundedCornerShape(12.dp),
         colors = CardDefaults.cardColors(
             containerColor = Color.White.copy(
