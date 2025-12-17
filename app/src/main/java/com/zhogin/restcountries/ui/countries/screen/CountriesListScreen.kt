@@ -43,7 +43,7 @@ fun CountriesListScreen(
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun CountriesListContent(
-    state: CountriesState, // Предположим, твой стейт называется так
+    state: CountriesState,
     onCountryClick: (String) -> Unit,
     onRefresh: () -> Unit
 ) {
