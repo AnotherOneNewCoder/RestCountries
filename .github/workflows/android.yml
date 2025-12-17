@@ -33,8 +33,7 @@ jobs:
         with:
           api-level: 29
           arch: x86_64
-          target: default  # Используем чистый образ без Google Play Services
-          profile: pixel_5
+          target: google_apis
           force-avd-creation: false
           emulator-options: -no-window -gpu swiftshader_indirect -no-snapshot -noaudio -no-boot-anim -camera-off
           disable-animations: true
