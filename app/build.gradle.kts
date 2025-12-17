@@ -61,6 +61,7 @@ dependencies {
     implementation(libs.dagger.hilt.android)
     implementation(libs.hilt.navigation)
     implementation(libs.javax.inject)
+    implementation(libs.androidx.ui.test.junit4)
     kapt(libs.dagger.hilt.compiler)
 
     implementation(libs.ktor.client.serialization)

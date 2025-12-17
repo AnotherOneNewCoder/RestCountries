@@ -16,14 +16,15 @@ import androidx.compose.material3.pulltorefresh.rememberPullToRefreshState
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import com.zhogin.restcountries.R
+import com.zhogin.restcountries.ui.countries.CountriesState
 import com.zhogin.restcountries.ui.countries.CountriesViewModel
 import com.zhogin.restcountries.ui.countries.component.CountryListItem
-
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -31,26 +32,36 @@ fun CountriesListScreen(
     viewModel: CountriesViewModel = hiltViewModel(),
     onCountryClick: (String) -> Unit,
 ) {
-    val state = viewModel.state
+    // Stateful: Связь с логикой
+    CountriesListContent(
+        state = viewModel.state,
+        onCountryClick = onCountryClick,
+        onRefresh = { viewModel.loadCountries(forceRefresh = true) }
+    )
+}
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun CountriesListContent(
+    state: CountriesState, // Предположим, твой стейт называется так
+    onCountryClick: (String) -> Unit,
+    onRefresh: () -> Unit
+) {
     val isRefreshing = state.isLoading && state.countries.isNotEmpty()
     val pullToRefreshState = rememberPullToRefreshState()
 
     PullToRefreshBox(
-        modifier = Modifier
-            .fillMaxSize()
-        ,
+        modifier = Modifier.fillMaxSize(),
         isRefreshing = isRefreshing,
-        onRefresh = {
-            viewModel.loadCountries(forceRefresh = true)
-        },
+        onRefresh = onRefresh,
         state = pullToRefreshState
     ) {
-        Box(
-            modifier = Modifier.fillMaxSize()
-        ) {
+        Box(modifier = Modifier.fillMaxSize()) {
             if (state.isLoading && state.countries.isEmpty()) {
                 CircularProgressIndicator(
-                    modifier = Modifier.align(Alignment.Center)
+                    modifier = Modifier
+                        .align(Alignment.Center)
+                        .testTag("loader")
                 )
             } else if (state.showErrorText) {
                 Text(
@@ -62,36 +73,29 @@ fun CountriesListScreen(
                         .padding(horizontal = 24.dp)
                 )
             } else {
-                LazyColumn(
-                    modifier = Modifier
-                        .fillMaxSize()
-                ) {
+                LazyColumn(modifier = Modifier.fillMaxSize()) {
                     items(items = state.countries, key = { it.name }) { country ->
                         CountryListItem(
                             county = country,
-                            onClick = {
-                                onCountryClick(it)
-                            }
+                            onClick = onCountryClick
                         )
                     }
                 }
             }
         }
     }
+
+    // Снэкбар при наличии данных, но возникшей ошибке (например, при обновлении)
     if (state.error != null && state.countries.isNotEmpty()) {
         Snackbar(
             modifier = Modifier.padding(16.dp),
             action = {
-                TextButton(
-                    onClick = { viewModel.loadCountries(forceRefresh = true) }
-                ) {
+                TextButton(onClick = onRefresh) {
                     Text(stringResource(R.string.retry))
                 }
             }
         ) {
-            Text(
-                text = state.error
-            )
+            Text(text = state.error)
         }
     }
 }
