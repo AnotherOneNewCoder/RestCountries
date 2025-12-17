@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">RestCountries</string>
     <string name="flag">Flag %1$s</string>
-    <string name="continent">Continent</string>
+    <string name="continent">Region</string>
     <string name="unknown">Unknown</string>
     <string name="capital">Capital</string>
     <string name="population">Population</string>

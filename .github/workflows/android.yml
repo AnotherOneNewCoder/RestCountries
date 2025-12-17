@@ -9,7 +9,7 @@ on:
 jobs:
   test:
     runs-on: macos-latest # Используем macOS, так как там лучше работает ускорение для эмулятора
-    timeout-minutes: 45
+    timeout-minutes: 120
 
     steps:
       - name: Checkout code

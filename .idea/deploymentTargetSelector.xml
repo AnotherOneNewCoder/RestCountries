@@ -11,10 +11,13 @@
       <SelectionState runConfigName="All Tests">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="loadingState_showsLoader()">
+      <SelectionState runConfigName="errorState_showsMessage()">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="errorState_showsMessage()">
+      <SelectionState runConfigName="CountryDetailsScreenTest">
+        <option name="selectionMode" value="DROPDOWN" />
+      </SelectionState>
+      <SelectionState runConfigName="countryDetails_showsLabelsAndValues()">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
     </selectionStates>
