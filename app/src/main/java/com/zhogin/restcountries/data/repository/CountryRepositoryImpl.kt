@@ -1,13 +1,14 @@
 package com.zhogin.restcountries.data.repository
 
+import com.zhogin.restcountries.common.IoDispatcher
 import com.zhogin.restcountries.common.Resource
-import com.zhogin.restcountries.data.api.CountriesApiService
+import com.zhogin.restcountries.data.api.service.CountriesApiService
 import com.zhogin.restcountries.data.api.mapper.CountryDtoMapper
 import com.zhogin.restcountries.data.cache.CountriesDatabase
 import com.zhogin.restcountries.data.cache.mapper.CountryEntityMapper
 import com.zhogin.restcountries.domain.model.Country
 import com.zhogin.restcountries.domain.repository.CountryRepository
-import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.flow
@@ -20,10 +21,10 @@ import javax.inject.Inject
 @Suppress("UNCHECKED_CAST")
 class CountryRepositoryImpl @Inject constructor(
     private val api: CountriesApiService,
-//    private val dao: CountryDao,
     private val database: CountriesDatabase,
     private val dtoMapper: CountryDtoMapper,
-    private val entityMapper: CountryEntityMapper
+    private val entityMapper: CountryEntityMapper,
+    @IoDispatcher private val ioDispatcher: CoroutineDispatcher
 ): CountryRepository {
     override fun getCountries(forceRefresh: Boolean): Flow<Resource<List<Country>>> {
         return flow {
@@ -48,7 +49,7 @@ class CountryRepositoryImpl @Inject constructor(
                     emit(Resource.Error("Update error: ${e.message}", entityMapper.mapListToDomain(cacheEntities)))
                 }
             }
-        }.flowOn(Dispatchers.IO) as Flow<Resource<List<Country>>>
+        }.flowOn(ioDispatcher) as Flow<Resource<List<Country>>>
 
 
 

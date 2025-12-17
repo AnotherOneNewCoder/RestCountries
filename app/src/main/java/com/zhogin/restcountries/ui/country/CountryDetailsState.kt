@@ -1,9 +1,9 @@
-package com.zhogin.restcountries.ui
+package com.zhogin.restcountries.ui.country
 
 import com.zhogin.restcountries.domain.model.Country
 
-data class CountriesState(
-    val countries: List<Country> = emptyList(),
+data class CountryDetailsState(
+    val country: Country? = null,
     val isLoading: Boolean = true,
     val error: String? = null,
     val showErrorText: Boolean = false

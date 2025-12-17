@@ -1,4 +1,4 @@
-package com.zhogin.restcountries.ui.components
+package com.zhogin.restcountries.ui.countries.component
 
 
 import androidx.compose.foundation.clickable
@@ -22,8 +22,11 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import coil3.compose.AsyncImage
+import com.zhogin.restcountries.R
 import com.zhogin.restcountries.domain.model.Country
 import com.zhogin.restcountries.ui.theme.IconDetails
 import com.zhogin.restcountries.ui.theme.TextDark
@@ -57,7 +60,7 @@ fun CountryListItem(
         ) {
             AsyncImage(
                 model = county.flagUri,
-                contentDescription = "Флаг ${county.name}",
+                contentDescription = stringResource(R.string.flag, county.name),
                 contentScale = ContentScale.FillBounds,
                 modifier = Modifier.size(48.dp)
                     .aspectRatio(1.5f)
@@ -66,17 +69,19 @@ fun CountryListItem(
             Text(
                 text = county.name,
                 style = MaterialTheme.typography.titleMedium,
-                color = TextDark
+                color = TextDark,
+                modifier = Modifier
+                    .weight(1f)
+                ,
+                maxLines = 2,
+                overflow = TextOverflow.Ellipsis
             )
             Spacer(Modifier.weight(1f))
             Icon(
                 imageVector = Icons.Default.ChevronRight,
                 contentDescription = null,
-                tint = IconDetails
+                tint = IconDetails,
             )
         }
     }
-
-
-
 }

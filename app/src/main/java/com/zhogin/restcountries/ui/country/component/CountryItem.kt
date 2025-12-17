@@ -1,4 +1,4 @@
-package com.zhogin.restcountries.ui.components
+package com.zhogin.restcountries.ui.country.component
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -21,10 +21,12 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil3.compose.AsyncImage
+import com.zhogin.restcountries.R
 import com.zhogin.restcountries.domain.model.Country
 import com.zhogin.restcountries.ui.theme.SecondGradient
 
@@ -32,7 +34,6 @@ import com.zhogin.restcountries.ui.theme.SecondGradient
 fun CountryItem(
     modifier: Modifier = Modifier,
     county: Country,
-
     ) {
     Column(
         modifier = modifier
@@ -62,36 +63,33 @@ fun CountryItem(
             Surface(
                 modifier = Modifier
                     .size(width = 100.dp, height = 60.dp)
-                    //.padding(top = 8.dp)
                 ,
                 shape = RoundedCornerShape(4.dp),
                 color = Color.LightGray
             ) {
                 AsyncImage(
                     model = county.flagUri,
-                    contentDescription = "Флаг ${county.name}",
+                    contentDescription = stringResource(R.string.flag, county.name),
                     contentScale = ContentScale.FillBounds,
                     modifier = Modifier.fillMaxSize()
-
                 )
             }
         }
-
         Spacer(Modifier.height(24.dp))
         InfoSelection(
-            label = "Continent",
-            value = county.region ?: "Unknown"
+            label = stringResource(R.string.continent),
+            value = county.region ?: stringResource(R.string.unknown)
         )
         InfoSelection(
-            label = "Capital",
-            value = county.capital ?: "Unknown"
+            label = stringResource(R.string.capital),
+            value = county.capital ?: stringResource(R.string.unknown)
         )
         InfoSelection(
-            label = "Population",
+            label = stringResource(R.string.population),
             value = county.population.toString()
         )
         Text(
-            text = "Other details",
+            text = stringResource(R.string.other_details),
             style = MaterialTheme.typography.labelLarge,
             color = MaterialTheme.colorScheme.primary,
             modifier = Modifier
@@ -113,17 +111,16 @@ fun CountryItem(
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 Text(
-                    text = "Emoji flag",
+                    text = stringResource(R.string.emoji_flag),
                     style = MaterialTheme.typography.bodyLarge
                 )
                 AsyncImage(
                     model = county.flagUri,
-                    contentDescription = "Флаг ${county.name}",
+                    contentDescription = stringResource(R.string.flag, county.name),
                     contentScale = ContentScale.FillBounds,
                     modifier = Modifier
                         .size(24.dp)
                         .aspectRatio(1.5f)
-
                 )
             }
         }

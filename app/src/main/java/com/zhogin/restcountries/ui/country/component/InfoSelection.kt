@@ -1,4 +1,4 @@
-package com.zhogin.restcountries.ui.components
+package com.zhogin.restcountries.ui.country.component
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth

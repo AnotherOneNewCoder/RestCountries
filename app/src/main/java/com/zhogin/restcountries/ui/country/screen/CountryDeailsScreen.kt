@@ -1,4 +1,4 @@
-package com.zhogin.restcountries.ui.screen
+package com.zhogin.restcountries.ui.country.screen
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
@@ -15,8 +15,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
-import com.zhogin.restcountries.ui.CountryDetailsViewModel
-import com.zhogin.restcountries.ui.components.CountryItem
+import com.zhogin.restcountries.ui.country.CountryDetailsViewModel
+import com.zhogin.restcountries.ui.country.component.CountryItem
 
 @Composable
 fun CountryDetailsScreen(

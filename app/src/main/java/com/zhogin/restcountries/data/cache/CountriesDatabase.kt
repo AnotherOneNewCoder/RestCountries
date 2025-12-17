@@ -29,7 +29,6 @@ fun CountriesDatabase(applicationContext: Context) : CountriesDatabase {
         CountriesRoomDatabase::class.java,
         "public_tasks_db"
     )
-        //.addMigrations(Migration_1_2, Migration_2_3)
         .build()
     return CountriesDatabase(productRoomDatabase)
 }

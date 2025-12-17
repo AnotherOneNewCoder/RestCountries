@@ -1,5 +1,7 @@
 package com.zhogin.restcountries.ui.navigation
 
+import android.os.Build
+import androidx.annotation.RequiresApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
@@ -19,6 +21,7 @@ import androidx.compose.ui.draw.paint
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -30,12 +33,13 @@ import androidx.navigation3.runtime.rememberSaveableStateHolderNavEntryDecorator
 import androidx.navigation3.ui.NavDisplay
 import androidx.savedstate.serialization.SavedStateConfiguration
 import com.zhogin.restcountries.R
-import com.zhogin.restcountries.ui.screen.CountriesListScreen
-import com.zhogin.restcountries.ui.screen.CountryDetailsScreen
+import com.zhogin.restcountries.ui.countries.screen.CountriesListScreen
+import com.zhogin.restcountries.ui.country.screen.CountryDetailsScreen
 import com.zhogin.restcountries.ui.theme.FirstGradient
 import kotlinx.serialization.modules.SerializersModule
 import kotlinx.serialization.modules.polymorphic
 
+@RequiresApi(Build.VERSION_CODES.VANILLA_ICE_CREAM)
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun NavigationRoot(
@@ -58,7 +62,7 @@ fun NavigationRoot(
                 title = {
                     if (backStack.size == 1) {
                         Text(
-                            text = "Countries",
+                            text = stringResource(R.string.countries),
                             fontWeight = FontWeight.Bold,
                             fontSize = 20.sp,
                             modifier = Modifier.padding(start = 8.dp)
@@ -72,7 +76,7 @@ fun NavigationRoot(
                         ) {
                             Icon(
                                 imageVector = Icons.AutoMirrored.Filled.ArrowBack,
-                                contentDescription = "Back"
+                                contentDescription = stringResource(R.string.back)
                             )
                         }
                     }
@@ -85,7 +89,7 @@ fun NavigationRoot(
                     ) {
                         Icon(
                             imageVector = Icons.Default.MoreVert,
-                            contentDescription = "menu"
+                            contentDescription = stringResource(R.string.menu)
                         )
                     }
 

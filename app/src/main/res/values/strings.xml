@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">RestCountries</string>
+    <string name="flag">Flag %1$s</string>
+    <string name="continent">Continent</string>
+    <string name="unknown">Unknown</string>
+    <string name="capital">Capital</string>
+    <string name="population">Population</string>
+    <string name="other_details">Other details</string>
+    <string name="emoji_flag">Emoji flag</string>
+    <string name="no_data_check_connection">No data received. Check connection.</string>
+    <string name="retry">Retry</string>
+    <string name="countries">Countries</string>
+    <string name="back">Back</string>
+    <string name="menu">Menu</string>
 </resources>

@@ -1,4 +1,4 @@
-package com.zhogin.restcountries.ui
+package com.zhogin.restcountries.ui.country
 
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -15,7 +15,7 @@ import javax.inject.Inject
 class CountryDetailsViewModel @Inject constructor(
     private val getCountyDetailsUseCase: GetCountyDetailsUseCase,
 
-): ViewModel() {
+    ): ViewModel() {
     var state by mutableStateOf(CountryDetailsState())
 
     fun loadCountryFromDb(name: String) {

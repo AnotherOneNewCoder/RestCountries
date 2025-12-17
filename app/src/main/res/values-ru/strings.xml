@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Страны</string>
+    <string name="flag">Флаг %1$s</string>
+    <string name="emoji_flag">Эмодзи флаг</string>
+    <string name="no_data_check_connection">Данные не найдены. Проверьте подключение.</string>
+    <string name="continent">Континент</string>
+    <string name="unknown">Неизвестно</string>
+    <string name="capital">Столица</string>
+    <string name="population">Население</string>
+    <string name="other_details">Детали</string>
+    <string name="retry">Повторить</string>
+    <string name="countries">Страны</string>
+    <string name="back">Назад</string>
+    <string name="menu">Меню</string>
+</resources>

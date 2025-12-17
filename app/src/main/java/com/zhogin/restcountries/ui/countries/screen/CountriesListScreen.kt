@@ -1,4 +1,4 @@
-package com.zhogin.restcountries.ui.screen
+package com.zhogin.restcountries.ui.countries.screen
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
@@ -16,11 +16,13 @@ import androidx.compose.material3.pulltorefresh.rememberPullToRefreshState
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
-import com.zhogin.restcountries.ui.CountriesViewModel
-import com.zhogin.restcountries.ui.components.CountryListItem
+import com.zhogin.restcountries.R
+import com.zhogin.restcountries.ui.countries.CountriesViewModel
+import com.zhogin.restcountries.ui.countries.component.CountryListItem
 
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -52,7 +54,7 @@ fun CountriesListScreen(
                 )
             } else if (state.showErrorText) {
                 Text(
-                    text = state.error ?: "Данные не найдены. Проверьте подключение.",
+                    text = state.error ?: stringResource(R.string.no_data_check_connection),
                     textAlign = TextAlign.Center,
                     modifier = Modifier
                         .fillMaxWidth()
@@ -83,7 +85,7 @@ fun CountriesListScreen(
                 TextButton(
                     onClick = { viewModel.loadCountries(forceRefresh = true) }
                 ) {
-                    Text("Повторить")
+                    Text(stringResource(R.string.retry))
                 }
             }
         ) {

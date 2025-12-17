@@ -1,4 +1,4 @@
-package com.zhogin.restcountries.ui
+package com.zhogin.restcountries.ui.countries
 
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf

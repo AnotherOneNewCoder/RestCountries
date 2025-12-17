@@ -1,4 +1,4 @@
-package com.zhogin.restcountries.data.api
+package com.zhogin.restcountries.data.api.service
 
 import com.zhogin.restcountries.data.api.model.CountryDto
 
