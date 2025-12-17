@@ -8,8 +8,9 @@ on:
 
 jobs:
   test:
-    runs-on: macos-latest # Используем macOS, так как там лучше работает ускорение для эмулятора
-    timeout-minutes: 120
+    # macOS необходим для аппаратного ускорения эмулятора (KVM/HVF)
+    runs-on: macos-latest
+    timeout-minutes: 60
 
     steps:
       - name: Checkout code
@@ -34,8 +35,14 @@ jobs:
           api-level: 29
           arch: x86_64
           target: google_apis
+          profile: pixel_5
           force-avd-creation: false
-          emulator-options: -no-window -gpu swiftshader_indirect -no-snapshot -noaudio -no-boot-anim -camera-off
+          emulator-options: >
+            -no-window 
+            -gpu swiftshader_indirect 
+            -no-snapshot 
+            -noaudio 
+            -no-boot-anim 
+            -camera-off
           disable-animations: true
           script: ./gradlew connectedDebugAndroidTest
-
