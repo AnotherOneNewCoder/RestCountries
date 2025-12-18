@@ -68,6 +68,7 @@ dependencies {
     implementation(libs.hilt.navigation)
     implementation(libs.javax.inject)
     implementation(libs.androidx.ui.test.junit4)
+    implementation(libs.espresso.core)
     kapt(libs.dagger.hilt.compiler)
 
     implementation(libs.ktor.client.serialization)

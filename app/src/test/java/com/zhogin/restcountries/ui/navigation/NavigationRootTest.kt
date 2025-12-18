@@ -8,6 +8,7 @@ import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performClick
 import androidx.navigation3.runtime.NavEntry
 import androidx.navigation3.ui.NavDisplay
+import androidx.test.espresso.Espresso
 import com.zhogin.restcountries.domain.model.Country
 import com.zhogin.restcountries.ui.countries.CountriesState
 import com.zhogin.restcountries.ui.countries.screen.CountriesListContent
@@ -22,7 +23,7 @@ class NavigationRootTest {
     val composeTestRule = createComposeRule()
 
     @Test
-    fun appNavigation_clickOnCountry_opensDetails() {
+    fun appNavigation_clickOnCountry_opensDetails_and_back_click() {
         // Имитируем стэк, как в твоем NavDisplay
         val backStack = mutableStateListOf<Route>(Route.CountriesList)
         val state = CountriesState(
@@ -83,5 +84,14 @@ class NavigationRootTest {
 
         // Проверяем результат
         composeTestRule.onNodeWithText("Details for France").assertIsDisplayed()
+
+        // Программно удаляем последний экран, имитация back click
+        //backStack.removeAt(backStack.size - 1)
+
+        Espresso.pressBack()
+        assert(backStack.size == 1)
+        assert(backStack.last() is Route.CountriesList)
+        composeTestRule.onNodeWithText("Details for France").assertDoesNotExist()
+
     }
 }
