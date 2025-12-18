@@ -47,6 +47,12 @@ android {
     room {
         schemaDirectory("$projectDir/schemas")
     }
+
+    testOptions {
+        unitTests {
+            isIncludeAndroidResources = true
+        }
+    }
 }
 
 dependencies {
@@ -74,20 +80,23 @@ dependencies {
     implementation(libs.coil.network)
     ksp(libs.androidx.room.compiler)
     api(libs.androidx.room.ktx)
-    implementation("androidx.compose.material:material-icons-extended:1.7.7")
+    implementation(libs.androidx.compose.material.icons.extended)
     implementation(libs.androidx.navigation3.ui)
     implementation(libs.androidx.navigation3.runtime)
     implementation(libs.androidx.lifecycle.viewmodel.navigation3)
 
-    testImplementation("io.ktor:ktor-client-mock:3.3.3")
+    testImplementation(libs.ktor.client.mock)
+
+    testImplementation(libs.robolectric)
+    testImplementation(libs.core.ktx)
 
     // Для тестирования корутин (runTest, Dispatchers.setMain)
-    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.7.3")
+    testImplementation(libs.kotlinx.coroutines.test)
     // Для работы с Flow
-    testImplementation("app.cash.turbine:turbine:1.0.0")
+    testImplementation(libs.turbine)
 
     // (Опционально)
-    testImplementation("io.mockk:mockk:1.13.8")
+    testImplementation(libs.mockk)
     testImplementation(libs.junit)
 
     androidTestImplementation(libs.androidx.junit)
@@ -97,7 +106,6 @@ dependencies {
     debugImplementation(libs.androidx.compose.ui.tooling)
     debugImplementation(libs.androidx.compose.ui.test.manifest)
 
-    androidTestImplementation("androidx.room:room-testing:2.8.4")
-    androidTestImplementation("androidx.test.ext:junit:1.1.5")
-    androidTestImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.7.3")
+    androidTestImplementation(libs.androidx.room.testing)
+    androidTestImplementation(libs.kotlinx.coroutines.test)
 }
