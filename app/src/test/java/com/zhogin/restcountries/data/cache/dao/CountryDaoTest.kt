@@ -3,19 +3,19 @@ package com.zhogin.restcountries.data.cache.dao
 import android.content.Context
 import androidx.room.Room
 import androidx.test.core.app.ApplicationProvider
-import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.zhogin.restcountries.data.cache.CountriesRoomDatabase
 import com.zhogin.restcountries.data.cache.entity.CountryEntity
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.test.runTest
 import org.junit.After
-import org.junit.Assert.assertEquals
-import org.junit.Assert.assertTrue
+import org.junit.Assert
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
+import org.robolectric.RobolectricTestRunner
 
-@RunWith(AndroidJUnit4::class)
+
+@RunWith(RobolectricTestRunner::class)
 class CountryDaoTest {
 
     private lateinit var db: CountriesRoomDatabase
@@ -54,8 +54,8 @@ class CountryDaoTest {
         val result = dao.getCountryByName("Ukraine")
 
 
-        assertEquals("Ukraine", result?.name)
-        assertEquals("Kyiv", result?.capital)
+        Assert.assertEquals("Ukraine", result?.name)
+        Assert.assertEquals("Kyiv", result?.capital)
     }
 
     @Test
@@ -71,9 +71,9 @@ class CountryDaoTest {
         val result = dao.getAllCountries().first()
 
         // Then: Проверяем сортировку ORDER BY name ASC
-        assertEquals(2, result.size)
-        assertEquals("Albania", result[0].name)
-        assertEquals("Germany", result[1].name)
+        Assert.assertEquals(2, result.size)
+        Assert.assertEquals("Albania", result[0].name)
+        Assert.assertEquals("Germany", result[1].name)
     }
 
     @Test
@@ -85,6 +85,6 @@ class CountryDaoTest {
         dao.deleteAllCountries()
         val result = dao.getAllCountries().first()
 
-        assertTrue(result.isEmpty())
+        Assert.assertTrue(result.isEmpty())
     }
 }

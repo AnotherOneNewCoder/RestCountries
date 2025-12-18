@@ -13,7 +13,10 @@ import com.zhogin.restcountries.ui.countries.CountriesState
 import com.zhogin.restcountries.ui.countries.screen.CountriesListContent
 import org.junit.Rule
 import org.junit.Test
+import org.junit.runner.RunWith
+import org.robolectric.RobolectricTestRunner
 
+@RunWith(RobolectricTestRunner::class)
 class NavigationRootTest {
     @get:Rule
     val composeTestRule = createComposeRule()
@@ -60,6 +63,7 @@ class NavigationRootTest {
                                 )
                             }
                         }
+
                         is Route.CountryDetails -> {
                             NavEntry(key) {
                                 Text("Details for ${key.name}")

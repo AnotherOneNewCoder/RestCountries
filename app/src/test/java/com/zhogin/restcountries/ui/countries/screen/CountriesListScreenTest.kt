@@ -1,14 +1,19 @@
 package com.zhogin.restcountries.ui.countries.screen
 
-
-
-import androidx.compose.ui.test.*
+import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.junit4.createComposeRule
+import androidx.compose.ui.test.onNodeWithTag
+import androidx.compose.ui.test.onNodeWithText
+import androidx.compose.ui.test.performClick
 import com.zhogin.restcountries.domain.model.Country
 import com.zhogin.restcountries.ui.countries.CountriesState
 import org.junit.Rule
 import org.junit.Test
+import org.junit.runner.RunWith
+import org.robolectric.RobolectricTestRunner
 
+
+@RunWith(RobolectricTestRunner::class)
 class CountriesListScreenTest {
 
     @get:Rule
